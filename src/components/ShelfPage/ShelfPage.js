@@ -78,9 +78,9 @@ function ShelfPage() {
         <li key={shelfItem.id}> <h2> {shelfItem.description}</h2></li>
         <img src={shelfItem.image_url} width ={250} height= {300} />
         <div className= "dltButton"> 
-        <IconButton aria-label="delete" size="large" >
+       {/*  <IconButton aria-label="delete" size="large" > */}
         <DeleteIcon fontSize="large" onClick={() => handleDelete(shelfItem.id)}/>
-        </IconButton>
+        {/* </IconButton> */}
         </div>
         </>
       ))}

@@ -29,7 +29,7 @@ function AddItemForm({fetchShelf}){
             value= {image}
             onChange= {evt => setImage(evt.target.value)}
             placeholder="image url here"
-            input height= "pixels"
+             height= "pixels"
 
        />
         <button><h3> ADD ITEM </h3></button> <br />
