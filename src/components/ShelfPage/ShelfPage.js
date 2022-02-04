@@ -66,7 +66,7 @@ function ShelfPage() {
     <ul>
       {shelf.map(shelfItem => (
         <>
-        <li key={shelfItem.id}>{shelfItem.description}</li>
+        <li >{shelfItem.description}</li>
         <img src={shelfItem.image_url}/>
         </>
       ))}
