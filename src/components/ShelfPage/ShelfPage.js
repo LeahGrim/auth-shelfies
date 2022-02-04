@@ -68,6 +68,8 @@ function ShelfPage() {
         <>
         <li key={shelfItem.id}> <h2> {shelfItem.description}</h2></li>
         <img src={shelfItem.image_url} width ={250} height= {300} />
+        <li >{shelfItem.description}</li>
+        <img src={shelfItem.image_url}/>
         </>
       ))}
     </ul>
