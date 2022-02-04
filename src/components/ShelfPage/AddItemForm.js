@@ -12,6 +12,7 @@ function AddItemForm({fetchShelf}){
         .then(() => fetchShelf())
         .catch(err => console.error(err));
     };
+
    return(
         <>
         <form onSubmit= {onSubmit}>
@@ -31,8 +32,10 @@ function AddItemForm({fetchShelf}){
             input height= "pixels"
 
        />
-        <button><h3> ADD ITEM </h3></button>
-        </div>
+        <button><h3> ADD ITEM </h3></button> <br />
+        
+       </div>
+
         </form>
         </>
     )

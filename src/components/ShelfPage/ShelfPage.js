@@ -2,6 +2,11 @@ import React from 'react';
 import {useState, useEffect } from 'react';
 import axios from 'axios';
 import AddItemForm from './AddItemForm';
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
+
+//run npm install @mui/icons-material
+//run npm install @mui/material 
 function ShelfPage() {
   const [user, setUser] = useState(null)
   const [shelf, setShelf] = useState([])
@@ -31,8 +36,6 @@ function ShelfPage() {
       .then((res) => {
         setShelf(res.data)
         console.log('shelf is', res.data);
-        
-        
       })
       .catch((err) => {
         console.error('get shelves error', err);
@@ -48,7 +51,11 @@ function ShelfPage() {
     setPassword('')
     setUser(null)
   }
-
+  const handleDelete = (id) =>{
+    axios.delete(`/api/shelf/${id}`)
+    .then(() => {fetchShelf()})
+    .catch(err => console.log(err));
+};
   const onLogout = () => {
     console.log('onLogout');
     axios.post('/api/user')
@@ -70,11 +77,15 @@ function ShelfPage() {
         <> 
         <li key={shelfItem.id}> <h2> {shelfItem.description}</h2></li>
         <img src={shelfItem.image_url} width ={250} height= {300} />
-       
-        </> 
+        <div className= "dltButton"> 
+        <IconButton aria-label="delete" size="large" >
+        <DeleteIcon fontSize="large" onClick={() => handleDelete(shelfItem.id)}/>
+        </IconButton>
+        </div>
+        </>
       ))}
     </ul>
-
+    
     </div>
     </div>
     </div>

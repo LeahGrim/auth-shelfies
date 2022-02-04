@@ -42,5 +42,12 @@ input{
     display: flex;
     margin-right: 10px;
     padding: 30px;
+    flex-direction: column;
 
+}
+.dltButton{
+  display: flex;
+  justify-content: center;
+  
+  
 }
