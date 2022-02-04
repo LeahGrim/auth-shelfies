@@ -28,8 +28,22 @@ router.get('/',  rejectUnauthenticated, (req, res) => {
  * Add an item for the logged in user to the shelf
  */
 router.post('/', (req, res) => {
-  // endpoint functionality
+        const queryString = `
+                            INSERT INTO "item" ("description", "image_url", "user_id")
+                              VALUES ($1, $2, $3);
+                            `
+        const queryParams= [req.body.description, req.body.image_url, req.user.id]
+                          
+        pool.query(queryString, queryParams)
+        .then((results) => {
+          res.sendStatus(201);
+        })
+        .catch(err => {
+          console.error(`POST /shelf failed on shelf.router.js page`, err);
+          res.sendStatus(500);
+        })
 });
+
 
 /**
  * Delete an item if it's something the logged in user added

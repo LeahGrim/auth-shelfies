@@ -1,7 +1,7 @@
 import React from 'react';
-import {useState, useEffect } from 'react'
-import axios from 'axios'
-
+import {useState, useEffect } from 'react';
+import axios from 'axios';
+import AddItemForm from './AddItemForm';
 function ShelfPage() {
   const [user, setUser] = useState(null)
   const [shelf, setShelf] = useState([])
@@ -59,6 +59,8 @@ function ShelfPage() {
   return (
     <div className="container">
       <h2>Shelf</h2>
+      {/* we will need to pass the fetchItems (axios.get function) through to the form */}
+      <AddItemForm  fetchShelf={fetchShelf} />
       <p>All of the available items can be seen here.</p>
 
     <ul>
