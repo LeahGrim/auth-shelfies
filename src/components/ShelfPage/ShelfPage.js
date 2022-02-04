@@ -48,7 +48,11 @@ function ShelfPage() {
     setPassword('')
     setUser(null)
   }
-
+  const handleDelete = (id) =>{
+    axios.delete(`/api/shelf/${id}`)
+    .then(() => fetchShelf())
+    .catch(err => console.log(err));
+};
   const onLogout = () => {
     console.log('onLogout');
     axios.post('/api/user')
@@ -68,6 +72,7 @@ function ShelfPage() {
         <>
         <li >{shelfItem.description}</li>
         <img src={shelfItem.image_url}/>
+        <button onClick={() => handleDelete(shelfItem.id)}>Delete</button>
         </>
       ))}
     </ul>

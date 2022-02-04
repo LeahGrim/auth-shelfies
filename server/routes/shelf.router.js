@@ -1,7 +1,8 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-const { rejectUnauthenticated } = require('../modules/authentication-middleware');
+const {rejectUnauthenticated} = require('../modules/authentication-middleware');
+
 /**
  * Get all of the items on the shelf
  */
@@ -50,6 +51,19 @@ router.post('/', (req, res) => {
  */
 router.delete('/:id', (req, res) => {
   // endpoint functionality
+  console.log('id is', req.params.id);
+  let queryString = `
+    DELETE FROM "item"
+    WHERE user_id = $1;`;
+  let queryParams = [req.params.id]
+    pool.query(queryString, queryParams)
+      .then((results) => {
+        res.sendStatus(204);
+      })
+      .catch(err =>{
+        console.log('DELETE /shelf failed', err);
+        res.sendStatus(500);
+      })
 });
 
 /**
