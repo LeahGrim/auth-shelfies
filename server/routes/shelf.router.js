@@ -71,6 +71,23 @@ router.delete('/:id', (req, res) => {
  */
 router.put('/:id', (req, res) => {
   // endpoint functionality
+  console.log('id is', req.params.id);
+  console.log('desc and url are', req.body.description, req.body.image_url);
+  let queryString = 
+  `UPDATE item
+  SET description = $1,
+  image_url = $2
+  WHERE id = $3
+  `
+  let queryParams = [req.body.description, req.body.image_url, req.params.id]
+  pool.query(queryString, queryParams)
+  .then((response) => {
+    res.sendStatus(204)
+  })
+  .catch(err => {
+    console.log('put failed', err);
+    
+  })
 });
 
 /**
