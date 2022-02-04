@@ -64,18 +64,18 @@ function ShelfPage() {
       {/* we will need to pass the fetchItems (axios.get function) through to the form */}
     
       <p>All of the available items can be seen here.</p>
-
+      <div className= "itemBox">
     <ul>
       {shelf.map(shelfItem => (
-        <>
+        <> 
         <li key={shelfItem.id}> <h2> {shelfItem.description}</h2></li>
         <img src={shelfItem.image_url} width ={250} height= {300} />
-        <li >{shelfItem.description}</li>
-        <img src={shelfItem.image_url}/>
-        </>
+       
+        </> 
       ))}
     </ul>
 
+    </div>
     </div>
     </div>
   );
