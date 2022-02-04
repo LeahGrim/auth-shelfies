@@ -66,8 +66,8 @@ function ShelfPage() {
     <ul>
       {shelf.map(shelfItem => (
         <>
-        <li key={shelfItem.id}>{shelfItem.description}</li>
-        <img src={shelfItem.image_url}/>
+        <li key={shelfItem.id}> <h2> {shelfItem.description}</h2></li>
+        <img src={shelfItem.image_url} width ={250} height= {300} />
         </>
       ))}
     </ul>
@@ -75,5 +75,6 @@ function ShelfPage() {
     </div>
   );
 }
+
 
 export default ShelfPage;
