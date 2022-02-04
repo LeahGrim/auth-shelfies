@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from 'react';
-
+import './AddItemForm.css';
 function AddItemForm({fetchShelf}){
    const [newItem, setNewItem] = useState('');
    const [image, setImage] = useState('');
@@ -16,7 +16,10 @@ function AddItemForm({fetchShelf}){
    return(
         <>
         <form onSubmit= {onSubmit}>
+        <div className= "addItemTitle"> 
         <h2><strong> ADD NEW ITEM </strong></h2>
+        </div>
+        <div className= "inputFields">
         <input 
             value= {newItem}
             onChange= {evt => setNewItem(evt.target.value)}
@@ -26,10 +29,12 @@ function AddItemForm({fetchShelf}){
             value= {image}
             onChange= {evt => setImage(evt.target.value)}
             placeholder="image url here"
+            input height= "pixels"
+
        />
-        <button><h2> ADD ITEM </h2></button> <br />
+        <button><h3> ADD ITEM </h3></button> <br />
         
-       
+       </div>
 
         </form>
         </>

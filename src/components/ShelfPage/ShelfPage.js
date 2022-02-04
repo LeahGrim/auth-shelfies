@@ -2,6 +2,11 @@ import React from 'react';
 import {useState, useEffect } from 'react';
 import axios from 'axios';
 import AddItemForm from './AddItemForm';
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
+
+//run npm install @mui/icons-material
+//run npm install @mui/material 
 function ShelfPage() {
   const [user, setUser] = useState(null)
   const [shelf, setShelf] = useState([])
@@ -59,24 +64,33 @@ function ShelfPage() {
   }
 
   return (
-    <div className="container">
+   <div className="container">
+      <AddItemForm  fetchShelf={fetchShelf} />
+      <div className="shelfItems">
       <h2>Shelf</h2>
       {/* we will need to pass the fetchItems (axios.get function) through to the form */}
-      <AddItemForm  fetchShelf={fetchShelf} />
+    
       <p>All of the available items can be seen here.</p>
-
+      <div className= "itemBox">
     <ul>
       {shelf.map(shelfItem => (
-        <>
-        <li>{shelfItem.description}</li>
-        <img src={shelfItem.image_url}/>
-        <button onClick={() => handleDelete(shelfItem.id)}>Delete</button>
+        <> 
+        <li key={shelfItem.id}> <h2> {shelfItem.description}</h2></li>
+        <img src={shelfItem.image_url} width ={250} height= {300} />
+        <div className= "dltButton"> 
+        <IconButton aria-label="delete" size="large" >
+        <DeleteIcon fontSize="large" onClick={() => handleDelete(shelfItem.id)}/>
+        </IconButton>
+        </div>
         </>
       ))}
     </ul>
-
+    
+    </div>
+    </div>
     </div>
   );
 }
+
 
 export default ShelfPage;
