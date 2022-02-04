@@ -54,7 +54,7 @@ router.delete('/:id', (req, res) => {
   console.log('id is', req.params.id);
   let queryString = `
     DELETE FROM "item"
-    WHERE user_id = $1;`;
+    WHERE id = $1;`;
   let queryParams = [req.params.id]
     pool.query(queryString, queryParams)
       .then((results) => {

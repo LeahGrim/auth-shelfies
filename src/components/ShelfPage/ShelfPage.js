@@ -31,8 +31,6 @@ function ShelfPage() {
       .then((res) => {
         setShelf(res.data)
         console.log('shelf is', res.data);
-        
-        
       })
       .catch((err) => {
         console.error('get shelves error', err);
@@ -50,7 +48,7 @@ function ShelfPage() {
   }
   const handleDelete = (id) =>{
     axios.delete(`/api/shelf/${id}`)
-    .then(() => fetchShelf())
+    .then(() => {fetchShelf()})
     .catch(err => console.log(err));
 };
   const onLogout = () => {
@@ -70,7 +68,7 @@ function ShelfPage() {
     <ul>
       {shelf.map(shelfItem => (
         <>
-        <li >{shelfItem.description}</li>
+        <li>{shelfItem.description}</li>
         <img src={shelfItem.image_url}/>
         <button onClick={() => handleDelete(shelfItem.id)}>Delete</button>
         </>
