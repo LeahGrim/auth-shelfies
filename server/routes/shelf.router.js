@@ -1,6 +1,7 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
 /**
  * Get all of the items on the shelf
@@ -21,6 +22,17 @@ router.post('/', (req, res) => {
  */
 router.delete('/:id', (req, res) => {
   // endpoint functionality
+  const queryString = `
+    DELETE FORM "shelf"
+    WHERE shelf.user_id = $1;`;
+    pool.query(queryString)
+      .then((results) => {
+        res.sendStatus(204);
+      })
+      .catch(err =>{
+        console.log('DELETE /shelf failed', err);
+        res.sendStatus(500);
+      })
 });
 
 /**
