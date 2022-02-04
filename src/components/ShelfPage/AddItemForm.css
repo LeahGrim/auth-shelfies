@@ -1,0 +1,39 @@
+input{
+    line-height: 4em;
+    background-color:rgb(144, 198, 202);
+}
+
+.inputFields{
+    display: flex;
+    justify-content: center;
+    border: 2px solid black;
+    width: 400px;
+    height: 75px;
+    margin: auto;
+}
+.addItemTitle{
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 400px;
+    height: 75px;
+    border: 2px solid black;
+    margin: auto;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+
+}
+
+.shelfItems{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(82, 184, 202);
+    margin-top: 25px;
+}

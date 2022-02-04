@@ -57,10 +57,12 @@ function ShelfPage() {
   }
 
   return (
-    <div className="container">
+   <div className="container">
+      <AddItemForm  fetchShelf={fetchShelf} />
+      <div className="shelfItems">
       <h2>Shelf</h2>
       {/* we will need to pass the fetchItems (axios.get function) through to the form */}
-      <AddItemForm  fetchShelf={fetchShelf} />
+    
       <p>All of the available items can be seen here.</p>
 
     <ul>
@@ -74,6 +76,7 @@ function ShelfPage() {
       ))}
     </ul>
 
+    </div>
     </div>
   );
 }
