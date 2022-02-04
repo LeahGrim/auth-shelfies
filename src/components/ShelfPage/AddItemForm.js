@@ -1,4 +1,7 @@
-function AddItemForm(){
+import axios from "axios";
+import { useState } from 'react';
+
+function AddItemForm({fetchShelf}){
    const [newItem, setNewItem] = useState('');
    const [image, setImage] = useState('');
    
@@ -16,11 +19,13 @@ function AddItemForm(){
         <input 
             value= {newItem}
             onChange= {evt => setNewItem(evt.target.value)}
+            placeholder= "item here"
         />
         <input
             value= {image}
             onChange= {evt => setImage(evt.target.value)}
-        />
+            placeholder="image url here"
+       />
         <button><h2> ADD ITEM </h2></button>
         </form>
         </>
